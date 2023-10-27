@@ -1,0 +1,75 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Slang",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#identifier"
+        },
+        {
+            "include": "#operators"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.slang",
+                    "match": "\\b(func|endfunc|dup|clone|branch|goto|copy)\\b"
+                },
+                {
+                    "comment": "math operators",
+                    "name": "keyword.operator.math.rust",
+                    "match": "(([+%]|(\\*(?!\\w)))(?!=))|(-(?!>))|(/(?!/))"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.slang",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.slang",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "match": "(//).*$\\n?",
+                    "name": "comment.line.double-slash.slang"
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "match": "\\b(\\d+)\\b",
+                    "name": "constant.numeric.slang"
+                }
+            ]
+        },
+        "identifier": {
+            "patterns": [
+                {
+                    "match": "^\\s*\\d+\\s*:",
+                    "name": "constant.numeric.slang"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.slang"
+}
